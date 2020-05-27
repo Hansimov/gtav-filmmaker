@@ -13,13 +13,55 @@ References:
     * https://github.com/njames93/GTA-V-Script-Decompiler
 * root-cause/v-decompiled-scripts: Decompiled scripts of GTA V version 1868. 
     * https://github.com/root-cause/v-decompiled-scripts
-* Cameras - Documentation - GTAForums 
-    * https://gtaforums.com/topic/793247-cameras/
+* ali-alidoust/gta5-extended-video-export: GTA V Video Export Enhancement 
+    * https://github.com/ali-alidoust/gta5-extended-video-export
 
 
 Problem specified links:
 * openCamera for Grand Theft Auto V - Scripts & Plugins - GTAForums (Recording limit)
     * https://gtaforums.com/topic/815220-opencamera-for-grand-theft-auto-v/
+* Cameras - Documentation - GTAForums 
+    * https://gtaforums.com/topic/793247-cameras/
+* Take a screen shot from command line in Windows - Super User 
+    * https://superuser.com/questions/75614/take-a-screen-shot-from-command-line-in-windows
+* batch.scripts/screenCapture.bat at master · npocmaka/batch.scripts 
+    * https://github.com/npocmaka/batch.scripts/blob/master/hybrids/.net/c/screenCapture.bat
+* c++ - How can I take a screenshot in a windows application? - Stack Overflow 
+    * https://stackoverflow.com/questions/3291167/how-can-i-take-a-screenshot-in-a-windows-application
+
+
+Film making tools comparison:
+* Unreal Engine, C4D / Maya
+    * Advantages:
+        * High capabilities to customize resources and timeline
+        * Support real-time playing and high-quality rendering simultaneously
+        * Great combination with programming and art
+    * Disadvantages:
+        * Need to create most of the assets and interactions from the beginning, which might be the most time-consuming part
+            * can be solved with external free resources
+        * Not easy to use, cooperate and distribute
+            * not a problem for an experienced single creator
+* GTA5 + mods
+    * Advantages:
+        * Large number of preseted resources, including buildings, environments, peds, vehicles, weathers, animations, interactions, audios and so on
+        * Support real time playing
+        * Large community with lots of mods and many users
+    * Disadvantages:
+        * Lack of cababiliies to edit and arrange the scenes
+            * can be solved with Filmmaker mod (under my development)
+        * Low quality of rendering frames
+            * can be partly solved with graphics related mods, such as NaturalVision and "Extended Video Export" (with the drawbacks of Rockstar Editor)
+            * for a story-dominant film, the quality of frames might not be an important issue
+        * Cannot record long-time clips with Rockstar Editor
+            * can be solved with real-time or in-game recording system (under my development)
+        * Lack of customized resources
+            * can be solved with external resources and OpenIV
+            * can use green screen and After Effects
+
+In short, the key issue of choosing UE or GTA5 is:
+    * UE's high customizability, with high time cost
+    * GTA5's high integration, with low customizability and weird working flow
+Thus for a one-person creator like myself, use GTA5 might be better.
 
 Tools:
 * Visual Studio
@@ -28,17 +70,6 @@ Tools:
 * FiveM
 * OpenIV
 * .NET Reflector
-
-Modules:
-* MODE:
-    * Play, Edit, Spawn, Record, Render, Preview
-* OBJECT:
-        Ped, Vehicle, Camera, Event, Misc
-    PROPERTIES:
-        Ped:
-
-
-
 
 
 Todo list:
@@ -54,15 +85,41 @@ Todo list:
             * use a third party screen shot software, send an event to it everytime (per frame) when the rendering process is done
 
 * free control camera, peds (enhanced menyoo spooner mode)
-* keyframes
-* support mouse click
+* keyframes, auto add key when recording
+* support mouse click / toggle focus on Play and Edit UI
 * support autocomplete drop-down list
 * timeline
 * 
 
+
+Modules:
+* Mode:
+    * Play, Edit, Spawn, Record, Preview, Render
+* Object:
+    Ped, Vehicle, Camera, Light, Event, Misc
+* Properties:
+    * ALL: name, type, visible, pos, rot, scale
+    * Ped:
+        * animation, carry, waypoint, speek, control
+    * Vehicle:
+        * waypoint, control
+    * Camera:
+        * FOV, interp, 
+    * Event (including Weather):
+        * 
+    * Misc
+
 Questions:
 * Pure native functions or using Qt?
-
+    * Qt is better. Although it might be complicated to communicate and combine the native functions and Qt modules when developping the MOD, it is easier to design the GUI.
+* Since rendering images can be done with screenshot per frame, how to add sound effects?
+    * M1: Detect and store the sound effects id called during playing, extract, export and compose them to .wav formats.
+        * Maybe not realistic, since there are many other factors to affect the final sound effects besides the original audio file
+    * M2: Real-time screen recording, both images and audios.
+        * How to ensure the smooth playing (rendering) of the scenes?
+    * M3: Use Rockstar Editor 
+        * Time limit restrictions of recording
+        * Infomation loss of cameras
 
 Implementations:
     Mode:
