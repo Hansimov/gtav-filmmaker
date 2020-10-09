@@ -38,7 +38,8 @@ Film making tools comparison:
         * Great combination with programming and art
     * Disadvantages:
         * Need to create most of the assets and interactions from the beginning, which might be the most time-consuming part
-            * can be solved with external free resources
+            * can be solved with external free resources and reuse existent resources
+            * can use procedural generation techniques
         * Not easy to use, cooperate and distribute
             * not a problem for an experienced single creator
 * GTA5 + mods
@@ -62,14 +63,30 @@ In short, the key issue of choosing UE or GTA5 is:
     * UE's high customizability, with high time cost
     * GTA5's high integration, with low customizability and weird working flow
 Thus for a one-person creator like myself, use GTA5 might be better.
+But in the long term, UE is more valuable.
 
-Tools:
+Maybe we can use GTA5 for lively city and streets scenes, UE for customized cameras and character animations, and After Effects to combine them.
+
+Develop tools:
 * Visual Studio
 * ScriptHookV
 * wxWidgets / Qt
 * FiveM
 * OpenIV
 * .NET Reflector
+
+Assitant softwares:
+* Unreal Engine
+* Cinema 4D
+* CityEngine
+* After Effects
+* Houdini
+
+Assitant mods:
+* Menyoo PC
+* Simple Trainer
+* Scene Director
+* NaturalVision
 
 
 Todo list:
