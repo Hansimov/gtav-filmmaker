@@ -68,6 +68,7 @@ But in the long term, UE is more valuable.
 Maybe we can use GTA5 for lively city and streets scenes, UE for customized cameras and character animations, and After Effects to combine them.
 
 Develop tools:
+
 * Visual Studio
 * ScriptHookV
 * wxWidgets / Qt
@@ -76,6 +77,7 @@ Develop tools:
 * .NET Reflector
 
 Assitant softwares:
+
 * Unreal Engine
 * Cinema 4D
 * CityEngine
@@ -90,7 +92,9 @@ Assitant mods:
 
 
 Todo list:
-* remove the restrictions of rockstar recording duration
+
+* [optional] remove the restrictions of rockstar recording duration
+    * Or just DEPRECATE the rockstar editor completely, and use Windows video and audio api to record them, which is a more feasible solution
     * the time limit of recording seems to be hard-coded in the GTA5.exe file, but there are still some possible methods to walk around. The time limit seems to depend on the number of events and business of environments.
         * Hack the GTA5.exe and modify the parameter which sets the limit
             * Hard but not impossible I guess, since the hex format of the .exe file still reveals some infos according to my simple diving
@@ -106,7 +110,7 @@ Todo list:
 * support mouse click / toggle focus on Play and Edit UI
 * support autocomplete drop-down list
 * timeline
-* 
+* ...
 
 
 Modules:
@@ -136,7 +140,7 @@ Questions:
         * How to ensure the smooth playing (rendering) of the scenes?
     * M3: Use Rockstar Editor 
         * Time limit restrictions of recording
-        * Infomation loss of cameras
+        * Information loss of cameras
 
 Implementations:
     Mode:
@@ -149,6 +153,16 @@ Implementations:
     * Record mode?
     * Preview mode?
 
-    Timeline
+    Timeline:
+    * Event-Driven, instead of  Data-Driven which is the common way of doing things in 3d softwares
+        * 3d and editing softwares can control each frame of video, but it is not practical to apply this kind of method on the game playing, since game is real-time and event-driven
+        * One idea is that we can apply a continuous control or event sequence to the obeject through the Timeline
+            * Cons: cannot control the states of cars and peds accurately
+        * Another idea is that we can use reverse events, for example, we set the start and end position of a car in the Timeline first, and then calculate its speed at each time point, and then determine the operations which the cars should take, like speed-up or slow-down
+            * cons: hard to implement
+        * Or we can combine the two ideas?
+        * Some other techniques are:
+            * recording events, just like what Scene Director does
+
 
 
